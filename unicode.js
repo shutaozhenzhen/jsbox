@@ -1,4 +1,4 @@
-list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "<="]
+list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "←", "↑", "↓"]
 function init() {
   $ui.render({
     views: [{
@@ -46,10 +46,10 @@ function init() {
             var
               txt = $("text-input").text;
             $keyboard.insert(String(eval('"\\u' + txt + '"')));
-          }else{
+          } else {
             var
-            txt = $("text-input").text;
-          $clipboard.text= String(eval('"\\u' + txt + '"'));
+              txt = $("text-input").text;
+            $clipboard.text = String(eval('"\\u' + txt + '"'));
           }
         }
 
@@ -89,10 +89,36 @@ function init() {
       events: {
         didSelect: function (sender, indexPath) {
           var t = list[indexPath.row];
-          if (t == "<=") {
+          if (t == "←") {
             var k = $("text-input").text.split("")
             k.pop();
             $("text-input").text = "0" + k.join("");
+          } else if (t == "↑") {
+            var k = parseInt($("text-input").text, 16);
+            k++;
+            k=k%(16*16*16*16);
+            k = k.toString(16).split("");
+            if (k.length < 4) {
+              do {
+                k = k.join("");
+                k = "0" + k;
+                k = k.split("")
+              } while (k.length < 4)
+            } 
+            $("text-input").text=k.join("")
+          } else if (t == "↓") {
+            var k = parseInt($("text-input").text, 16);
+            k--;
+            k=(k+16*16*16*16)%(16*16*16*16);
+            k = k.toString(16).split("");
+            if (k.length < 4) {
+              do {
+                k = k.join("");
+                k = "0" + k;
+                k = k.split("")
+              } while (k.length < 4)
+            } 
+            $("text-input").text=k.join("")
           } else {
             var k = $("text-input").text.split("")
             if (k.length == 4) {
