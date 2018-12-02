@@ -157,17 +157,3 @@ const
         views: mainViews
     };
 $ui.render(ui);
-async function getImage() {
-    let resp = await $photo.pick();
-    let image;
-    if (resp.image) {
-        image = resp.image;
-        return image;
-    } else {
-        $ui.alert({
-            title: "提醒",
-            message: "你没有选择图片",
-        });
-        $app.close();
-    }
-}
