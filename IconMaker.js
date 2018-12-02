@@ -1,6 +1,6 @@
 let image
 const
-    sideLength =  Math.ceil(72.0 / $device.info.screen.scale),
+    sideLength = 72,
     view = {
         type: "view",
         props: {
