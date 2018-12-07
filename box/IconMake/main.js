@@ -42,7 +42,7 @@ const
     buttonSave = {
         type: "button",
         props: {
-            title: "save"
+            title: $l10n("save")
         },
         layout: function (make, view) {
             make.centerX.equalTo(view.super).multipliedBy(1.4)
@@ -80,7 +80,7 @@ const
     buttonSelect = {
         type: "button",
         props: {
-            title: "select"
+            title: $l10n("select")
         },
         layout: function (make, view) {
             make.centerX.equalTo(view.super).multipliedBy(0.6)
